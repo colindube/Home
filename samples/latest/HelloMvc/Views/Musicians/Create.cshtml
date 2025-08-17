@@ -1,0 +1,51 @@
+@using MvcSample.Web.Models
+@model Musician
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create Musician";
+}
+
+<h2>Create Musician</h2>
+
+@using (Html.BeginForm("Create", "Musicians", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Please fix the errors below.", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Instrument, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Instrument, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Instrument, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Genre, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DebutYear, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.DebutYear, new { @class = "form-control", type = "number", min = "1900", max = "2100" })
+        @Html.ValidationMessageFor(m => m.DebutYear, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Website, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Website, new { @class = "form-control", type = "url" })
+        @Html.ValidationMessageFor(m => m.Website, null, new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
