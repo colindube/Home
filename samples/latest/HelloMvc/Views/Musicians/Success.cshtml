@@ -1,0 +1,27 @@
+@using MvcSample.Web.Models
+@model Musician
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Musician Saved";
+}
+
+<h2>Musician Saved</h2>
+
+<dl class="dl-horizontal">
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Instrument</dt>
+    <dd>@Model.Instrument</dd>
+    <dt>Genre</dt>
+    <dd>@Model.Genre</dd>
+    <dt>Debut Year</dt>
+    <dd>@Model.DebutYear</dd>
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+    <dt>Website</dt>
+    <dd>@Model.Website</dd>
+</dl>
+
+<p>
+    <a href="/Musicians/Create" class="btn btn-default">Add another</a>
+</p>
