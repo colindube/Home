@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@layer base {
+	:root {
+		--radius: 0.5rem;
+	}
+
+	button, input, select, textarea {
+		font: inherit;
+	}
+}
+
+@layer components {
+	.input {
+		@apply w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20;
+	}
+	.label {
+		@apply block text-sm font-medium text-gray-700;
+	}
+	.error-text {
+		@apply mt-1 text-sm text-red-600;
+	}
+	.btn {
+		@apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-60;
+	}
+	.btn-primary {
+		@apply bg-blue-600 text-white hover:bg-blue-700;
+	}
+	.btn-secondary {
+		@apply bg-gray-100 text-gray-900 hover:bg-gray-200;
+	}
+}
