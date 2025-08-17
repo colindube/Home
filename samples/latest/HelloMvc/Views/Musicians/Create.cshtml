@@ -1,0 +1,58 @@
+@using MvcSample.Web.Models
+@model Musician
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create Musician";
+}
+
+<h2>Create Musician</h2>
+
+@using (Html.BeginForm("Create", "Musicians", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Full name" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Instrument)
+        @Html.TextBoxFor(m => m.Instrument, new { @class = "form-control", placeholder = "Instrument" })
+        @Html.ValidationMessageFor(m => m.Instrument)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Genre)
+        @Html.TextBoxFor(m => m.Genre, new { @class = "form-control", placeholder = "Genre" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.YearsActive)
+        @Html.TextBoxFor(m => m.YearsActive, new { @class = "form-control", type = "number", min = "0", max = "100" })
+        @Html.ValidationMessageFor(m => m.YearsActive)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone)
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", type = "tel" })
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Website)
+        @Html.TextBoxFor(m => m.Website, new { @class = "form-control", type = "url" })
+        @Html.ValidationMessageFor(m => m.Website)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="@Url.Action("Index", "Musicians")" class="btn btn-default">Cancel</a>
+}

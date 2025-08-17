@@ -1,0 +1,53 @@
+@using MvcSample.Web.Models
+@using System.Collections.Generic
+@model IList<Musician>
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Musicians";
+}
+
+<h2>Musicians</h2>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create", "Musicians")">Add Musician</a>
+</p>
+
+@if (Model.Count == 0)
+{
+    <p>No musicians captured yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Instrument</th>
+                <th>Genre</th>
+                <th>Years Active</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Name</td>
+                <td>@m.Instrument</td>
+                <td>@m.Genre</td>
+                <td>@m.YearsActive</td>
+                <td>@m.Email</td>
+                <td>@m.Phone</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(m.Website))
+                    {
+                        <a href="@m.Website" target="_blank">@m.Website</a>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
